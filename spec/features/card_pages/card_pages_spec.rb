@@ -175,18 +175,13 @@ describe 'Card pages:' do
         @card2 = create(:card, list: @list, previous_id: @card.id)
         @card3 = create(:card, list: @list, previous_id: @card2.id)
         create_activities
-        create_comments
         visit project_board_list_card_path(current_project, @board, @list, @card)
       end
 
       let(:create_activities) { nil }
-      let(:create_comments) { nil }
 
       let(:trackable) { @card }
       it_behaves_like 'a page with an activity feed'
-
-      let(:commentable) { @card }
-      it_behaves_like 'a page with a comments feed'
 
       let(:subscribable) { @card }
       it_behaves_like 'a page with subscribe/unsubscribe links'
